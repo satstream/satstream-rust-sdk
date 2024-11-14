@@ -1,4 +1,4 @@
-# Rust API client for swagger
+# Rust API client for satstream-rust-sdk
 
 Satstream API
 
@@ -13,7 +13,7 @@ For more information, please visit [https://satstream.io](https://satstream.io)
 ## Installation
 Put the package under your project folder and add the following in import:
 ```
-    "./swagger"
+    "./satstream-rust-sdk"
 ```
 
 ## Documentation for API Endpoints
