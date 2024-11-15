@@ -1,7 +1,9 @@
 [package]
 name = "satstream-rust-sdk"
-version = "1.0.0"
-authors = ["Swagger Codegen team and contributors"]
+version = "1.0.10"
+authors = ["Satstream"]
+description = "Satstream API SDK for Rust"
+license = "NONE"
 
 [dependencies]
 serde = "1.0"
