@@ -1,6 +1,6 @@
 [package]
 name = "satstream-rust-sdk"
-version = "1.0.16"
+version = "1.0.17"
 authors = ["Satstream"]
 description = "Satstream API SDK for Rust"
 license = "MIT"
