@@ -14,6 +14,7 @@ use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestsAnalyzePsbtRequest {
+  /// The base64-encoded PSBT to analyze
   #[serde(rename = "psbt")]
   psbt: Option<String>
 }

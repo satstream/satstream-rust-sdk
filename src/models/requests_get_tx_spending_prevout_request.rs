@@ -16,7 +16,7 @@ use serde_json::Value;
 pub struct RequestsGetTxSpendingPrevoutRequest {
   /// The transaction outputs to check
   #[serde(rename = "outputs")]
-  outputs: Option<Vec<::models::GithubComSatstreamSsUtilsBitcoinCliTxSpendingPrevoutInput>>
+  outputs: Option<Vec<::models::TxSpendingPrevoutInput>>
 }
 
 impl RequestsGetTxSpendingPrevoutRequest {
@@ -26,16 +26,16 @@ impl RequestsGetTxSpendingPrevoutRequest {
     }
   }
 
-  pub fn set_outputs(&mut self, outputs: Vec<::models::GithubComSatstreamSsUtilsBitcoinCliTxSpendingPrevoutInput>) {
+  pub fn set_outputs(&mut self, outputs: Vec<::models::TxSpendingPrevoutInput>) {
     self.outputs = Some(outputs);
   }
 
-  pub fn with_outputs(mut self, outputs: Vec<::models::GithubComSatstreamSsUtilsBitcoinCliTxSpendingPrevoutInput>) -> RequestsGetTxSpendingPrevoutRequest {
+  pub fn with_outputs(mut self, outputs: Vec<::models::TxSpendingPrevoutInput>) -> RequestsGetTxSpendingPrevoutRequest {
     self.outputs = Some(outputs);
     self
   }
 
-  pub fn outputs(&self) -> Option<&Vec<::models::GithubComSatstreamSsUtilsBitcoinCliTxSpendingPrevoutInput>> {
+  pub fn outputs(&self) -> Option<&Vec<::models::TxSpendingPrevoutInput>> {
     self.outputs.as_ref()
   }
 

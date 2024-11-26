@@ -14,6 +14,7 @@ use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestsCombinePsbtRequest {
+  /// Array of base64-encoded PSBTs to combine
   #[serde(rename = "psbts")]
   psbts: Vec<String>
 }
