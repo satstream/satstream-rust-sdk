@@ -13,31 +13,31 @@
 use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct InlineResponse20031 {
+pub struct InlineResponse20041 {
   #[serde(rename = "data")]
-  data: Option<::models::SatoshiResponse>,
+  data: Option<::models::RawTx2>,
   #[serde(rename = "utils.ResponseEnvelope")]
   utils_response_envelope: Option<::models::UtilsResponseEnvelope>
 }
 
-impl InlineResponse20031 {
-  pub fn new() -> InlineResponse20031 {
-    InlineResponse20031 {
+impl InlineResponse20041 {
+  pub fn new() -> InlineResponse20041 {
+    InlineResponse20041 {
       data: None,
       utils_response_envelope: None
     }
   }
 
-  pub fn set_data(&mut self, data: ::models::SatoshiResponse) {
+  pub fn set_data(&mut self, data: ::models::RawTx2) {
     self.data = Some(data);
   }
 
-  pub fn with_data(mut self, data: ::models::SatoshiResponse) -> InlineResponse20031 {
+  pub fn with_data(mut self, data: ::models::RawTx2) -> InlineResponse20041 {
     self.data = Some(data);
     self
   }
 
-  pub fn data(&self) -> Option<&::models::SatoshiResponse> {
+  pub fn data(&self) -> Option<&::models::RawTx2> {
     self.data.as_ref()
   }
 
@@ -49,7 +49,7 @@ impl InlineResponse20031 {
     self.utils_response_envelope = Some(utils_response_envelope);
   }
 
-  pub fn with_utils_response_envelope(mut self, utils_response_envelope: ::models::UtilsResponseEnvelope) -> InlineResponse20031 {
+  pub fn with_utils_response_envelope(mut self, utils_response_envelope: ::models::UtilsResponseEnvelope) -> InlineResponse20041 {
     self.utils_response_envelope = Some(utils_response_envelope);
     self
   }

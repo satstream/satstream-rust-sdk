@@ -15,7 +15,7 @@ use serde_json::Value;
 #[derive(Debug, Serialize, Deserialize)]
 pub struct InlineResponse20040 {
   #[serde(rename = "data")]
-  data: Option<::models::RawTx2>,
+  data: Option<::models::RawTx1>,
   #[serde(rename = "utils.ResponseEnvelope")]
   utils_response_envelope: Option<::models::UtilsResponseEnvelope>
 }
@@ -28,16 +28,16 @@ impl InlineResponse20040 {
     }
   }
 
-  pub fn set_data(&mut self, data: ::models::RawTx2) {
+  pub fn set_data(&mut self, data: ::models::RawTx1) {
     self.data = Some(data);
   }
 
-  pub fn with_data(mut self, data: ::models::RawTx2) -> InlineResponse20040 {
+  pub fn with_data(mut self, data: ::models::RawTx1) -> InlineResponse20040 {
     self.data = Some(data);
     self
   }
 
-  pub fn data(&self) -> Option<&::models::RawTx2> {
+  pub fn data(&self) -> Option<&::models::RawTx1> {
     self.data.as_ref()
   }
 

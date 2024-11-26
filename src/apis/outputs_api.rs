@@ -35,13 +35,13 @@ impl<C: hyper::client::Connect> OutputsApiClient<C> {
 }
 
 pub trait OutputsApi {
-    fn get_output_by_outpoint(&self, outpoint: &str) -> Box<Future<Item = ::models::InlineResponse20025, Error = Error<serde_json::Value>>>;
+    fn get_output_by_outpoint(&self, outpoint: &str) -> Box<Future<Item = ::models::InlineResponse20026, Error = Error<serde_json::Value>>>;
     fn get_outputs(&self, outpoints: Vec<String>) -> Box<Future<Item = ::models::InlineResponse2002, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>OutputsApi for OutputsApiClient<C> {
-    fn get_output_by_outpoint(&self, outpoint: &str) -> Box<Future<Item = ::models::InlineResponse20025, Error = Error<serde_json::Value>>> {
+    fn get_output_by_outpoint(&self, outpoint: &str) -> Box<Future<Item = ::models::InlineResponse20026, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -101,7 +101,7 @@ impl<C: hyper::client::Connect>OutputsApi for OutputsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20025, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20026, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

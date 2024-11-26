@@ -35,13 +35,13 @@ impl<C: hyper::client::Connect> MiningApiClient<C> {
 }
 
 pub trait MiningApi {
-    fn get_mining_info(&self, ) -> Box<Future<Item = ::models::InlineResponse20024, Error = Error<serde_json::Value>>>;
+    fn get_mining_info(&self, ) -> Box<Future<Item = ::models::InlineResponse20025, Error = Error<serde_json::Value>>>;
     fn get_network_hashps(&self, request: ::models::RequestsGetNetworkHashPsRequest) -> Box<Future<Item = ::models::InlineResponse20013, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>MiningApi for MiningApiClient<C> {
-    fn get_mining_info(&self, ) -> Box<Future<Item = ::models::InlineResponse20024, Error = Error<serde_json::Value>>> {
+    fn get_mining_info(&self, ) -> Box<Future<Item = ::models::InlineResponse20025, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -101,7 +101,7 @@ impl<C: hyper::client::Connect>MiningApi for MiningApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20024, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20025, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **get_mempool_ancestors**
-> ::models::InlineResponse20019 get_mempool_ancestors(ctx, request)
+> ::models::InlineResponse20020 get_mempool_ancestors(ctx, request)
 Get mempool ancestors
 
 Returns all in-mempool ancestors for a transaction in the mempool
@@ -23,34 +23,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **request** | [**RequestsGetMempoolAncestorsRequest**](RequestsGetMempoolAncestorsRequest.md)| Mempool ancestors request parameters | 
-
-### Return type
-
-[**::models::InlineResponse20019**](inline_response_200_19.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_mempool_descendants**
-> ::models::InlineResponse20020 get_mempool_descendants(ctx, request)
-Get mempool descendants
-
-Returns all in-mempool descendants for a transaction in the mempool
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **request** | [**RequestsGetMempoolDescendantsRequest**](RequestsGetMempoolDescendantsRequest.md)| Mempool descendants request parameters | 
 
 ### Return type
 
@@ -67,14 +39,18 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_mempool_info**
-> ::models::InlineResponse20021 get_mempool_info(ctx, )
-Get mempool information
+# **get_mempool_descendants**
+> ::models::InlineResponse20021 get_mempool_descendants(ctx, request)
+Get mempool descendants
 
-Returns details on the active state of the TX memory pool
+Returns all in-mempool descendants for a transaction in the mempool
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **request** | [**RequestsGetMempoolDescendantsRequest**](RequestsGetMempoolDescendantsRequest.md)| Mempool descendants request parameters | 
 
 ### Return type
 
@@ -91,18 +67,14 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_raw_mempool**
-> ::models::InlineResponse20022 get_raw_mempool(ctx, request)
-Get raw mempool
+# **get_mempool_info**
+> ::models::InlineResponse20022 get_mempool_info(ctx, )
+Get mempool information
 
-Returns all transaction ids in memory pool
+Returns details on the active state of the TX memory pool
 
 ### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **request** | [**RequestsGetRawMempoolRequest**](RequestsGetRawMempoolRequest.md)| Raw mempool request parameters | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -119,8 +91,36 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_raw_mempool**
+> ::models::InlineResponse20023 get_raw_mempool(ctx, request)
+Get raw mempool
+
+Returns all transaction ids in memory pool
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **request** | [**RequestsGetRawMempoolRequest**](RequestsGetRawMempoolRequest.md)| Raw mempool request parameters | 
+
+### Return type
+
+[**::models::InlineResponse20023**](inline_response_200_23.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **test_mempool_accept**
-> ::models::InlineResponse20023 test_mempool_accept(ctx, request)
+> ::models::InlineResponse20024 test_mempool_accept(ctx, request)
 Test mempool accept
 
 Tests whether raw transactions would be accepted by mempool
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**::models::InlineResponse20023**](inline_response_200_23.md)
+[**::models::InlineResponse20024**](inline_response_200_24.md)
 
 ### Authorization
 

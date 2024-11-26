@@ -36,7 +36,7 @@ impl<C: hyper::client::Connect> InscriptionsApiClient<C> {
 
 pub trait InscriptionsApi {
     fn fetch_inscription_child(&self, inscription_id: &str, child_index: i32) -> Box<Future<Item = ::models::InlineResponse20017, Error = Error<serde_json::Value>>>;
-    fn fetch_inscriptions(&self, inscriptions: Vec<String>) -> Box<Future<Item = Vec<Value>, Error = Error<serde_json::Value>>>;
+    fn fetch_inscriptions(&self, inscriptions: Vec<String>) -> Box<Future<Item = ::models::InlineResponse20019, Error = Error<serde_json::Value>>>;
     fn get_block_inscriptions(&self, block_height: i32) -> Box<Future<Item = ::models::InlineResponse20018, Error = Error<serde_json::Value>>>;
     fn get_inscription(&self, inscription_id: &str) -> Box<Future<Item = ::models::InlineResponse20017, Error = Error<serde_json::Value>>>;
     fn get_latest_inscriptions(&self, ) -> Box<Future<Item = ::models::InlineResponse20018, Error = Error<serde_json::Value>>>;
@@ -111,7 +111,7 @@ impl<C: hyper::client::Connect>InscriptionsApi for InscriptionsApiClient<C> {
         )
     }
 
-    fn fetch_inscriptions(&self, inscriptions: Vec<String>) -> Box<Future<Item = Vec<Value>, Error = Error<serde_json::Value>>> {
+    fn fetch_inscriptions(&self, inscriptions: Vec<String>) -> Box<Future<Item = ::models::InlineResponse20019, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -175,7 +175,7 @@ impl<C: hyper::client::Connect>InscriptionsApi for InscriptionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<Vec<Value>, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20019, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

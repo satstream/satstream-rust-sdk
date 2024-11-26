@@ -35,14 +35,14 @@ impl<C: hyper::client::Connect> RunesApiClient<C> {
 }
 
 pub trait RunesApi {
-    fn get_latest_runes(&self, ) -> Box<Future<Item = ::models::InlineResponse20029, Error = Error<serde_json::Value>>>;
-    fn get_latest_runes_page(&self, page: i32) -> Box<Future<Item = ::models::InlineResponse20029, Error = Error<serde_json::Value>>>;
-    fn get_rune(&self, rune_name: &str) -> Box<Future<Item = ::models::InlineResponse20028, Error = Error<serde_json::Value>>>;
+    fn get_latest_runes(&self, ) -> Box<Future<Item = ::models::InlineResponse20030, Error = Error<serde_json::Value>>>;
+    fn get_latest_runes_page(&self, page: i32) -> Box<Future<Item = ::models::InlineResponse20030, Error = Error<serde_json::Value>>>;
+    fn get_rune(&self, rune_name: &str) -> Box<Future<Item = ::models::InlineResponse20029, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>RunesApi for RunesApiClient<C> {
-    fn get_latest_runes(&self, ) -> Box<Future<Item = ::models::InlineResponse20029, Error = Error<serde_json::Value>>> {
+    fn get_latest_runes(&self, ) -> Box<Future<Item = ::models::InlineResponse20030, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -102,13 +102,13 @@ impl<C: hyper::client::Connect>RunesApi for RunesApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20029, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20030, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn get_latest_runes_page(&self, page: i32) -> Box<Future<Item = ::models::InlineResponse20029, Error = Error<serde_json::Value>>> {
+    fn get_latest_runes_page(&self, page: i32) -> Box<Future<Item = ::models::InlineResponse20030, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -168,13 +168,13 @@ impl<C: hyper::client::Connect>RunesApi for RunesApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20029, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20030, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn get_rune(&self, rune_name: &str) -> Box<Future<Item = ::models::InlineResponse20028, Error = Error<serde_json::Value>>> {
+    fn get_rune(&self, rune_name: &str) -> Box<Future<Item = ::models::InlineResponse20029, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -234,7 +234,7 @@ impl<C: hyper::client::Connect>RunesApi for RunesApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20028, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20029, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

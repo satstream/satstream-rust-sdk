@@ -35,16 +35,16 @@ impl<C: hyper::client::Connect> PSBTsApiClient<C> {
 }
 
 pub trait PSBTsApi {
-    fn analyze_psbt(&self, request: ::models::RequestsAnalyzePsbtRequest) -> Box<Future<Item = ::models::InlineResponse20026, Error = Error<serde_json::Value>>>;
+    fn analyze_psbt(&self, request: ::models::RequestsAnalyzePsbtRequest) -> Box<Future<Item = ::models::InlineResponse20027, Error = Error<serde_json::Value>>>;
     fn combine_psbt(&self, request: ::models::RequestsCombinePsbtRequest) -> Box<Future<Item = ::models::InlineResponse2005, Error = Error<serde_json::Value>>>;
     fn create_psbt(&self, request: ::models::RequestsCreatePsbtRequest) -> Box<Future<Item = ::models::InlineResponse2005, Error = Error<serde_json::Value>>>;
-    fn decode_psbt(&self, request: ::models::RequestsAnalyzePsbtRequest) -> Box<Future<Item = ::models::InlineResponse20027, Error = Error<serde_json::Value>>>;
+    fn decode_psbt(&self, request: ::models::RequestsAnalyzePsbtRequest) -> Box<Future<Item = ::models::InlineResponse20028, Error = Error<serde_json::Value>>>;
     fn join_psbts(&self, request: ::models::RequestsJoinPsbtsRequest) -> Box<Future<Item = ::models::InlineResponse2005, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>PSBTsApi for PSBTsApiClient<C> {
-    fn analyze_psbt(&self, request: ::models::RequestsAnalyzePsbtRequest) -> Box<Future<Item = ::models::InlineResponse20026, Error = Error<serde_json::Value>>> {
+    fn analyze_psbt(&self, request: ::models::RequestsAnalyzePsbtRequest) -> Box<Future<Item = ::models::InlineResponse20027, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -108,7 +108,7 @@ impl<C: hyper::client::Connect>PSBTsApi for PSBTsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20026, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20027, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
@@ -254,7 +254,7 @@ impl<C: hyper::client::Connect>PSBTsApi for PSBTsApiClient<C> {
         )
     }
 
-    fn decode_psbt(&self, request: ::models::RequestsAnalyzePsbtRequest) -> Box<Future<Item = ::models::InlineResponse20027, Error = Error<serde_json::Value>>> {
+    fn decode_psbt(&self, request: ::models::RequestsAnalyzePsbtRequest) -> Box<Future<Item = ::models::InlineResponse20028, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -318,7 +318,7 @@ impl<C: hyper::client::Connect>PSBTsApi for PSBTsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20027, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20028, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

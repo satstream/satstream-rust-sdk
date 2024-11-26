@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **analyze_psbt**
-> ::models::InlineResponse20026 analyze_psbt(ctx, request)
+> ::models::InlineResponse20027 analyze_psbt(ctx, request)
 Analyze PSBT
 
 Analyzes and provides information about the current status of a PSBT and its inputs
@@ -26,7 +26,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**::models::InlineResponse20026**](inline_response_200_26.md)
+[**::models::InlineResponse20027**](inline_response_200_27.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **decode_psbt**
-> ::models::InlineResponse20027 decode_psbt(ctx, request)
+> ::models::InlineResponse20028 decode_psbt(ctx, request)
 Decode PSBT
 
 Return a JSON object representing the serialized, base64-encoded partially signed Bitcoin transaction.
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**::models::InlineResponse20027**](inline_response_200_27.md)
+[**::models::InlineResponse20028**](inline_response_200_28.md)
 
 ### Authorization
 

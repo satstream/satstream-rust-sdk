@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_satoshi**
-> ::models::InlineResponse20030 get_satoshi(ctx, number)
+> ::models::InlineResponse20031 get_satoshi(ctx, number)
 Get satoshi info
 
 Retrieve information about a specific satoshi
@@ -22,7 +22,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**::models::InlineResponse20030**](inline_response_200_30.md)
+[**::models::InlineResponse20031**](inline_response_200_31.md)
 
 ### Authorization
 

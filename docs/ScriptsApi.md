@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **decode_script**
-> ::models::InlineResponse20031 decode_script(ctx, request)
+> ::models::InlineResponse20032 decode_script(ctx, request)
 Decode Script
 
 Decode a hex-encoded script and return detailed information about it.
@@ -22,7 +22,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**::models::InlineResponse20031**](inline_response_200_31.md)
+[**::models::InlineResponse20032**](inline_response_200_32.md)
 
 ### Authorization
 

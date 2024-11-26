@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fetch_inscriptions**
-> Vec<Value> fetch_inscriptions(ctx, inscriptions)
+> ::models::InlineResponse20019 fetch_inscriptions(ctx, inscriptions)
 Fetch multiple inscriptions
 
 Retrieve information about multiple inscriptions
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Vec<Value>**](Value.md)
+[**::models::InlineResponse20019**](inline_response_200_19.md)
 
 ### Authorization
 

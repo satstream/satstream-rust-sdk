@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_mining_info**
-> ::models::InlineResponse20024 get_mining_info(ctx, )
+> ::models::InlineResponse20025 get_mining_info(ctx, )
 Get mining information
 
 Returns a json object containing mining-related information
@@ -19,7 +19,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**::models::InlineResponse20024**](inline_response_200_24.md)
+[**::models::InlineResponse20025**](inline_response_200_25.md)
 
 ### Authorization
 

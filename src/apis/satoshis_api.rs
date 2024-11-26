@@ -35,12 +35,12 @@ impl<C: hyper::client::Connect> SatoshisApiClient<C> {
 }
 
 pub trait SatoshisApi {
-    fn get_satoshi(&self, number: i32) -> Box<Future<Item = ::models::InlineResponse20030, Error = Error<serde_json::Value>>>;
+    fn get_satoshi(&self, number: i32) -> Box<Future<Item = ::models::InlineResponse20031, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>SatoshisApi for SatoshisApiClient<C> {
-    fn get_satoshi(&self, number: i32) -> Box<Future<Item = ::models::InlineResponse20030, Error = Error<serde_json::Value>>> {
+    fn get_satoshi(&self, number: i32) -> Box<Future<Item = ::models::InlineResponse20031, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -100,7 +100,7 @@ impl<C: hyper::client::Connect>SatoshisApi for SatoshisApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20030, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20031, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

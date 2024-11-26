@@ -38,17 +38,17 @@ pub trait TransactionsApi {
     fn combine_raw_transaction(&self, request: ::models::RequestsCombineRawTransactionRequest) -> Box<Future<Item = ::models::InlineResponse2005, Error = Error<serde_json::Value>>>;
     fn convert_to_psbt(&self, request: ::models::RequestsConvertToPsbtRequest) -> Box<Future<Item = ::models::InlineResponse2005, Error = Error<serde_json::Value>>>;
     fn create_raw_transaction(&self, request: ::models::RequestsCreateRawTxRequest) -> Box<Future<Item = ::models::InlineResponse2005, Error = Error<serde_json::Value>>>;
-    fn decode_tx(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20038, Error = Error<serde_json::Value>>>;
-    fn get_raw_transaction_decoded(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20039, Error = Error<serde_json::Value>>>;
+    fn decode_tx(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20039, Error = Error<serde_json::Value>>>;
+    fn get_raw_transaction_decoded(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20040, Error = Error<serde_json::Value>>>;
     fn get_raw_transaction_hex(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse2005, Error = Error<serde_json::Value>>>;
-    fn get_raw_transaction_prevout(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20040, Error = Error<serde_json::Value>>>;
-    fn get_transaction(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20037, Error = Error<serde_json::Value>>>;
-    fn get_tx_out(&self, request: ::models::RequestsGetTxOutRequest) -> Box<Future<Item = ::models::InlineResponse20033, Error = Error<serde_json::Value>>>;
+    fn get_raw_transaction_prevout(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20041, Error = Error<serde_json::Value>>>;
+    fn get_transaction(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20038, Error = Error<serde_json::Value>>>;
+    fn get_tx_out(&self, request: ::models::RequestsGetTxOutRequest) -> Box<Future<Item = ::models::InlineResponse20034, Error = Error<serde_json::Value>>>;
     fn get_tx_out_proof(&self, request: ::models::RequestsGetTxOutProofRequest) -> Box<Future<Item = ::models::InlineResponse2005, Error = Error<serde_json::Value>>>;
-    fn get_tx_out_set_info(&self, request: ::models::RequestsGetTxOutSetInfoRequest) -> Box<Future<Item = ::models::InlineResponse20034, Error = Error<serde_json::Value>>>;
-    fn get_tx_spending_prevout(&self, request: ::models::RequestsGetTxSpendingPrevoutRequest) -> Box<Future<Item = ::models::InlineResponse20036, Error = Error<serde_json::Value>>>;
+    fn get_tx_out_set_info(&self, request: ::models::RequestsGetTxOutSetInfoRequest) -> Box<Future<Item = ::models::InlineResponse20035, Error = Error<serde_json::Value>>>;
+    fn get_tx_spending_prevout(&self, request: ::models::RequestsGetTxSpendingPrevoutRequest) -> Box<Future<Item = ::models::InlineResponse20037, Error = Error<serde_json::Value>>>;
     fn send_raw_transaction(&self, request: ::models::RequestsSendRawTransactionRequest) -> Box<Future<Item = ::models::InlineResponse2005, Error = Error<serde_json::Value>>>;
-    fn verify_tx_out_proof(&self, request: ::models::RequestsVerifyTxOutProofRequest) -> Box<Future<Item = ::models::InlineResponse20035, Error = Error<serde_json::Value>>>;
+    fn verify_tx_out_proof(&self, request: ::models::RequestsVerifyTxOutProofRequest) -> Box<Future<Item = ::models::InlineResponse20036, Error = Error<serde_json::Value>>>;
 }
 
 
@@ -263,7 +263,7 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
         )
     }
 
-    fn decode_tx(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20038, Error = Error<serde_json::Value>>> {
+    fn decode_tx(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20039, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -323,13 +323,13 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20038, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20039, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn get_raw_transaction_decoded(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20039, Error = Error<serde_json::Value>>> {
+    fn get_raw_transaction_decoded(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20040, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -389,7 +389,7 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20039, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20040, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
@@ -461,7 +461,7 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
         )
     }
 
-    fn get_raw_transaction_prevout(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20040, Error = Error<serde_json::Value>>> {
+    fn get_raw_transaction_prevout(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20041, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -521,13 +521,13 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20040, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20041, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn get_transaction(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20037, Error = Error<serde_json::Value>>> {
+    fn get_transaction(&self, txid: &str) -> Box<Future<Item = ::models::InlineResponse20038, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -587,13 +587,13 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20037, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20038, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn get_tx_out(&self, request: ::models::RequestsGetTxOutRequest) -> Box<Future<Item = ::models::InlineResponse20033, Error = Error<serde_json::Value>>> {
+    fn get_tx_out(&self, request: ::models::RequestsGetTxOutRequest) -> Box<Future<Item = ::models::InlineResponse20034, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -657,7 +657,7 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20033, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20034, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
@@ -733,7 +733,7 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
         )
     }
 
-    fn get_tx_out_set_info(&self, request: ::models::RequestsGetTxOutSetInfoRequest) -> Box<Future<Item = ::models::InlineResponse20034, Error = Error<serde_json::Value>>> {
+    fn get_tx_out_set_info(&self, request: ::models::RequestsGetTxOutSetInfoRequest) -> Box<Future<Item = ::models::InlineResponse20035, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -797,13 +797,13 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20034, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20035, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn get_tx_spending_prevout(&self, request: ::models::RequestsGetTxSpendingPrevoutRequest) -> Box<Future<Item = ::models::InlineResponse20036, Error = Error<serde_json::Value>>> {
+    fn get_tx_spending_prevout(&self, request: ::models::RequestsGetTxSpendingPrevoutRequest) -> Box<Future<Item = ::models::InlineResponse20037, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -867,7 +867,7 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20036, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20037, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
@@ -943,7 +943,7 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
         )
     }
 
-    fn verify_tx_out_proof(&self, request: ::models::RequestsVerifyTxOutProofRequest) -> Box<Future<Item = ::models::InlineResponse20035, Error = Error<serde_json::Value>>> {
+    fn verify_tx_out_proof(&self, request: ::models::RequestsVerifyTxOutProofRequest) -> Box<Future<Item = ::models::InlineResponse20036, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1007,7 +1007,7 @@ impl<C: hyper::client::Connect>TransactionsApi for TransactionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20035, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20036, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

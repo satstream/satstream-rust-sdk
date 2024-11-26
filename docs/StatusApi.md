@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_status**
-> ::models::InlineResponse20032 get_status(ctx, )
+> ::models::InlineResponse20033 get_status(ctx, )
 Get server status
 
 Retrieve information about the server installation and index
@@ -18,7 +18,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**::models::InlineResponse20032**](inline_response_200_32.md)
+[**::models::InlineResponse20033**](inline_response_200_33.md)
 
 ### Authorization
 

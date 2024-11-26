@@ -35,12 +35,12 @@ impl<C: hyper::client::Connect> StatusApiClient<C> {
 }
 
 pub trait StatusApi {
-    fn get_status(&self, ) -> Box<Future<Item = ::models::InlineResponse20032, Error = Error<serde_json::Value>>>;
+    fn get_status(&self, ) -> Box<Future<Item = ::models::InlineResponse20033, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>StatusApi for StatusApiClient<C> {
-    fn get_status(&self, ) -> Box<Future<Item = ::models::InlineResponse20032, Error = Error<serde_json::Value>>> {
+    fn get_status(&self, ) -> Box<Future<Item = ::models::InlineResponse20033, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -100,7 +100,7 @@ impl<C: hyper::client::Connect>StatusApi for StatusApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20032, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20033, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

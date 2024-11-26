@@ -138,6 +138,8 @@ mod inline_response_200_4;
 pub use self::inline_response_200_4::InlineResponse2004;
 mod inline_response_200_40;
 pub use self::inline_response_200_40::InlineResponse20040;
+mod inline_response_200_41;
+pub use self::inline_response_200_41::InlineResponse20041;
 mod inline_response_200_5;
 pub use self::inline_response_200_5::InlineResponse2005;
 mod inline_response_200_6;

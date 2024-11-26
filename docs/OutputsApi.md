@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_output_by_outpoint**
-> ::models::InlineResponse20025 get_output_by_outpoint(ctx, outpoint)
+> ::models::InlineResponse20026 get_output_by_outpoint(ctx, outpoint)
 Get output info by outpoint
 
 Retrieve information about a specific UTXO using outpoint string
@@ -23,7 +23,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**::models::InlineResponse20025**](inline_response_200_25.md)
+[**::models::InlineResponse20026**](inline_response_200_26.md)
 
 ### Authorization
 

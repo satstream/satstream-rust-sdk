@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_latest_runes**
-> ::models::InlineResponse20029 get_latest_runes(ctx, )
+> ::models::InlineResponse20030 get_latest_runes(ctx, )
 Get latest runes
 
 Retrieve information about the last 100 inscribed runes (first page)
@@ -20,7 +20,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**::models::InlineResponse20029**](inline_response_200_29.md)
+[**::models::InlineResponse20030**](inline_response_200_30.md)
 
 ### Authorization
 
@@ -34,7 +34,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_latest_runes_page**
-> ::models::InlineResponse20029 get_latest_runes_page(ctx, page)
+> ::models::InlineResponse20030 get_latest_runes_page(ctx, page)
 Get latest runes page
 
 Retrieve a specific page of 100 inscribed runes
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**::models::InlineResponse20029**](inline_response_200_29.md)
+[**::models::InlineResponse20030**](inline_response_200_30.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_rune**
-> ::models::InlineResponse20028 get_rune(ctx, rune_name)
+> ::models::InlineResponse20029 get_rune(ctx, rune_name)
 Get rune info
 
 Retrieve information about a specific rune
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**::models::InlineResponse20028**](inline_response_200_28.md)
+[**::models::InlineResponse20029**](inline_response_200_29.md)
 
 ### Authorization
 

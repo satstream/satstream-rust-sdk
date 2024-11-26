@@ -35,12 +35,12 @@ impl<C: hyper::client::Connect> ScriptsApiClient<C> {
 }
 
 pub trait ScriptsApi {
-    fn decode_script(&self, request: ::models::RequestsDecodeScriptRequest) -> Box<Future<Item = ::models::InlineResponse20031, Error = Error<serde_json::Value>>>;
+    fn decode_script(&self, request: ::models::RequestsDecodeScriptRequest) -> Box<Future<Item = ::models::InlineResponse20032, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>ScriptsApi for ScriptsApiClient<C> {
-    fn decode_script(&self, request: ::models::RequestsDecodeScriptRequest) -> Box<Future<Item = ::models::InlineResponse20031, Error = Error<serde_json::Value>>> {
+    fn decode_script(&self, request: ::models::RequestsDecodeScriptRequest) -> Box<Future<Item = ::models::InlineResponse20032, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -104,7 +104,7 @@ impl<C: hyper::client::Connect>ScriptsApi for ScriptsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20031, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20032, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

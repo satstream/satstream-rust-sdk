@@ -35,16 +35,16 @@ impl<C: hyper::client::Connect> MempoolApiClient<C> {
 }
 
 pub trait MempoolApi {
-    fn get_mempool_ancestors(&self, request: ::models::RequestsGetMempoolAncestorsRequest) -> Box<Future<Item = ::models::InlineResponse20019, Error = Error<serde_json::Value>>>;
-    fn get_mempool_descendants(&self, request: ::models::RequestsGetMempoolDescendantsRequest) -> Box<Future<Item = ::models::InlineResponse20020, Error = Error<serde_json::Value>>>;
-    fn get_mempool_info(&self, ) -> Box<Future<Item = ::models::InlineResponse20021, Error = Error<serde_json::Value>>>;
-    fn get_raw_mempool(&self, request: ::models::RequestsGetRawMempoolRequest) -> Box<Future<Item = ::models::InlineResponse20022, Error = Error<serde_json::Value>>>;
-    fn test_mempool_accept(&self, request: ::models::RequestsTestMempoolAcceptRequest) -> Box<Future<Item = ::models::InlineResponse20023, Error = Error<serde_json::Value>>>;
+    fn get_mempool_ancestors(&self, request: ::models::RequestsGetMempoolAncestorsRequest) -> Box<Future<Item = ::models::InlineResponse20020, Error = Error<serde_json::Value>>>;
+    fn get_mempool_descendants(&self, request: ::models::RequestsGetMempoolDescendantsRequest) -> Box<Future<Item = ::models::InlineResponse20021, Error = Error<serde_json::Value>>>;
+    fn get_mempool_info(&self, ) -> Box<Future<Item = ::models::InlineResponse20022, Error = Error<serde_json::Value>>>;
+    fn get_raw_mempool(&self, request: ::models::RequestsGetRawMempoolRequest) -> Box<Future<Item = ::models::InlineResponse20023, Error = Error<serde_json::Value>>>;
+    fn test_mempool_accept(&self, request: ::models::RequestsTestMempoolAcceptRequest) -> Box<Future<Item = ::models::InlineResponse20024, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>MempoolApi for MempoolApiClient<C> {
-    fn get_mempool_ancestors(&self, request: ::models::RequestsGetMempoolAncestorsRequest) -> Box<Future<Item = ::models::InlineResponse20019, Error = Error<serde_json::Value>>> {
+    fn get_mempool_ancestors(&self, request: ::models::RequestsGetMempoolAncestorsRequest) -> Box<Future<Item = ::models::InlineResponse20020, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -108,13 +108,13 @@ impl<C: hyper::client::Connect>MempoolApi for MempoolApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20019, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20020, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn get_mempool_descendants(&self, request: ::models::RequestsGetMempoolDescendantsRequest) -> Box<Future<Item = ::models::InlineResponse20020, Error = Error<serde_json::Value>>> {
+    fn get_mempool_descendants(&self, request: ::models::RequestsGetMempoolDescendantsRequest) -> Box<Future<Item = ::models::InlineResponse20021, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -178,13 +178,13 @@ impl<C: hyper::client::Connect>MempoolApi for MempoolApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20020, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20021, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn get_mempool_info(&self, ) -> Box<Future<Item = ::models::InlineResponse20021, Error = Error<serde_json::Value>>> {
+    fn get_mempool_info(&self, ) -> Box<Future<Item = ::models::InlineResponse20022, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -244,13 +244,13 @@ impl<C: hyper::client::Connect>MempoolApi for MempoolApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20021, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20022, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn get_raw_mempool(&self, request: ::models::RequestsGetRawMempoolRequest) -> Box<Future<Item = ::models::InlineResponse20022, Error = Error<serde_json::Value>>> {
+    fn get_raw_mempool(&self, request: ::models::RequestsGetRawMempoolRequest) -> Box<Future<Item = ::models::InlineResponse20023, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -314,13 +314,13 @@ impl<C: hyper::client::Connect>MempoolApi for MempoolApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20022, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20023, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn test_mempool_accept(&self, request: ::models::RequestsTestMempoolAcceptRequest) -> Box<Future<Item = ::models::InlineResponse20023, Error = Error<serde_json::Value>>> {
+    fn test_mempool_accept(&self, request: ::models::RequestsTestMempoolAcceptRequest) -> Box<Future<Item = ::models::InlineResponse20024, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -384,7 +384,7 @@ impl<C: hyper::client::Connect>MempoolApi for MempoolApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::InlineResponse20023, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::InlineResponse20024, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
