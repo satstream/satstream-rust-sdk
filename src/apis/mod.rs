@@ -50,18 +50,12 @@ impl<T> From<serde_json::Error> for Error<T> {
 
 use super::models::*;
 
-mod addresses_api;
-pub use self::addresses_api::{ AddressesApi, AddressesApiClient };
+mod bitcoin_api;
+pub use self::bitcoin_api::{ BitcoinApi, BitcoinApiClient };
 mod blocks_api;
 pub use self::blocks_api::{ BlocksApi, BlocksApiClient };
-mod fees_api;
-pub use self::fees_api::{ FeesApi, FeesApiClient };
-mod mempool_api;
-pub use self::mempool_api::{ MempoolApi, MempoolApiClient };
-mod runes_api;
-pub use self::runes_api::{ RunesApi, RunesApiClient };
-mod transactions_api;
-pub use self::transactions_api::{ TransactionsApi, TransactionsApiClient };
+mod inscriptions_api;
+pub use self::inscriptions_api::{ InscriptionsApi, InscriptionsApiClient };
 
 pub mod configuration;
 pub mod client;

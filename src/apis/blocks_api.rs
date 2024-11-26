@@ -35,24 +35,34 @@ impl<C: hyper::client::Connect> BlocksApiClient<C> {
 }
 
 pub trait BlocksApi {
-    fn get_block_by_hash(&self, hash: &str) -> Box<Future<Item = ::models::ResponsesGetBlockByHash, Error = Error<serde_json::Value>>>;
-    fn get_block_info(&self, height: i32) -> Box<Future<Item = ::models::ResponsesGetBlockInfo, Error = Error<serde_json::Value>>>;
-    fn get_block_transactions(&self, height: i32) -> Box<Future<Item = ::models::ResponsesGetBlockTransactions, Error = Error<serde_json::Value>>>;
-    fn get_current_block_height(&self, ) -> Box<Future<Item = ::models::ResponsesGetBlockHeight, Error = Error<serde_json::Value>>>;
+    fn get_block_by_hash(&self, block_hash: &str) -> Box<Future<Item = ::models::GithubComSatstreamSsApiServerApiBlockResponsesBlockResponse, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>BlocksApi for BlocksApiClient<C> {
-    fn get_block_by_hash(&self, hash: &str) -> Box<Future<Item = ::models::ResponsesGetBlockByHash, Error = Error<serde_json::Value>>> {
+    fn get_block_by_hash(&self, block_hash: &str) -> Box<Future<Item = ::models::GithubComSatstreamSsApiServerApiBlockResponsesBlockResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("X-API-KEY".to_owned(), val);
+        };
         let method = hyper::Method::Get;
 
         let query_string = {
             let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
             query.finish()
         };
-        let uri_str = format!("{}/blocks/hash/{hash}?{}", configuration.base_path, query_string, hash=hash);
+        let uri_str = format!("{}/block/hash/{block_hash}?{}", configuration.base_path, query_string, block_hash=block_hash);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -67,6 +77,9 @@ impl<C: hyper::client::Connect>BlocksApi for BlocksApiClient<C> {
         }
 
 
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
 
 
         // send request
@@ -87,157 +100,7 @@ impl<C: hyper::client::Connect>BlocksApi for BlocksApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::ResponsesGetBlockByHash, _> = serde_json::from_slice(&body);
-                parsed.map_err(|e| Error::from(e))
-            })
-        )
-    }
-
-    fn get_block_info(&self, height: i32) -> Box<Future<Item = ::models::ResponsesGetBlockInfo, Error = Error<serde_json::Value>>> {
-        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
-
-        let method = hyper::Method::Get;
-
-        let query_string = {
-            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
-            query.finish()
-        };
-        let uri_str = format!("{}/blocks/{height}?{}", configuration.base_path, query_string, height=height);
-
-        // TODO(farcaller): handle error
-        // if let Err(e) = uri {
-        //     return Box::new(futures::future::err(e));
-        // }
-        let mut uri: hyper::Uri = uri_str.parse().unwrap();
-
-        let mut req = hyper::Request::new(method, uri);
-
-        if let Some(ref user_agent) = configuration.user_agent {
-            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
-        }
-
-
-
-
-        // send request
-        Box::new(
-        configuration.client.request(req)
-            .map_err(|e| Error::from(e))
-            .and_then(|resp| {
-                let status = resp.status();
-                resp.body().concat2()
-                    .and_then(move |body| Ok((status, body)))
-                    .map_err(|e| Error::from(e))
-            })
-            .and_then(|(status, body)| {
-                if status.is_success() {
-                    Ok(body)
-                } else {
-                    Err(Error::from((status, &*body)))
-                }
-            })
-            .and_then(|body| {
-                let parsed: Result<::models::ResponsesGetBlockInfo, _> = serde_json::from_slice(&body);
-                parsed.map_err(|e| Error::from(e))
-            })
-        )
-    }
-
-    fn get_block_transactions(&self, height: i32) -> Box<Future<Item = ::models::ResponsesGetBlockTransactions, Error = Error<serde_json::Value>>> {
-        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
-
-        let method = hyper::Method::Get;
-
-        let query_string = {
-            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
-            query.finish()
-        };
-        let uri_str = format!("{}/blocks/{height}/transactions?{}", configuration.base_path, query_string, height=height);
-
-        // TODO(farcaller): handle error
-        // if let Err(e) = uri {
-        //     return Box::new(futures::future::err(e));
-        // }
-        let mut uri: hyper::Uri = uri_str.parse().unwrap();
-
-        let mut req = hyper::Request::new(method, uri);
-
-        if let Some(ref user_agent) = configuration.user_agent {
-            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
-        }
-
-
-
-
-        // send request
-        Box::new(
-        configuration.client.request(req)
-            .map_err(|e| Error::from(e))
-            .and_then(|resp| {
-                let status = resp.status();
-                resp.body().concat2()
-                    .and_then(move |body| Ok((status, body)))
-                    .map_err(|e| Error::from(e))
-            })
-            .and_then(|(status, body)| {
-                if status.is_success() {
-                    Ok(body)
-                } else {
-                    Err(Error::from((status, &*body)))
-                }
-            })
-            .and_then(|body| {
-                let parsed: Result<::models::ResponsesGetBlockTransactions, _> = serde_json::from_slice(&body);
-                parsed.map_err(|e| Error::from(e))
-            })
-        )
-    }
-
-    fn get_current_block_height(&self, ) -> Box<Future<Item = ::models::ResponsesGetBlockHeight, Error = Error<serde_json::Value>>> {
-        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
-
-        let method = hyper::Method::Get;
-
-        let query_string = {
-            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
-            query.finish()
-        };
-        let uri_str = format!("{}/blocks/current-height?{}", configuration.base_path, query_string);
-
-        // TODO(farcaller): handle error
-        // if let Err(e) = uri {
-        //     return Box::new(futures::future::err(e));
-        // }
-        let mut uri: hyper::Uri = uri_str.parse().unwrap();
-
-        let mut req = hyper::Request::new(method, uri);
-
-        if let Some(ref user_agent) = configuration.user_agent {
-            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
-        }
-
-
-
-
-        // send request
-        Box::new(
-        configuration.client.request(req)
-            .map_err(|e| Error::from(e))
-            .and_then(|resp| {
-                let status = resp.status();
-                resp.body().concat2()
-                    .and_then(move |body| Ok((status, body)))
-                    .map_err(|e| Error::from(e))
-            })
-            .and_then(|(status, body)| {
-                if status.is_success() {
-                    Ok(body)
-                } else {
-                    Err(Error::from((status, &*body)))
-                }
-            })
-            .and_then(|body| {
-                let parsed: Result<::models::ResponsesGetBlockHeight, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::GithubComSatstreamSsApiServerApiBlockResponsesBlockResponse, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
